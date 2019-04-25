@@ -19,5 +19,9 @@
     "mocha": "^6.1.1",
     "tslint": "^5.15.0",
     "typescript": "^3.4.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bitofsky/nhn-toast-api"
   }
 }
