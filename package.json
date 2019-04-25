@@ -1,0 +1,23 @@
+{
+  "name": "nhn-toast-api",
+  "version": "0.0.1",
+  "description": "NHN Toast API NodeJS Module",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/bin/mocha"
+  },
+  "author": "Bum-Seok Hwang",
+  "license": "MIT",
+  "dependencies": {
+    "lru-cache": "^5.1.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
+  },
+  "devDependencies": {
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^11.13.0",
+    "mocha": "^6.1.1",
+    "tslint": "^5.15.0",
+    "typescript": "^3.4.2"
+  }
+}
