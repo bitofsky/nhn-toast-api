@@ -1,0 +1,4 @@
+.props TD.name {
+    white-space: nowrap;
+    max-width: none !important;
+}

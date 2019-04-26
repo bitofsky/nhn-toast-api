@@ -1,0 +1,241 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Source: Compute.js | nhn-toast-api</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-jsdoc.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/tui-doc.css">
+
+    
+        
+            <link type="text/css" rel="stylesheet" href="styles/custom.css">
+        
+    
+</head>
+<body>
+<nav class="lnb" id="lnb">
+    <div class="logo" style="">
+        
+            <img src="img/toast-ui.png" width="100%" height="100%">
+        
+    </div>
+    <div class="title">
+        <h1><a href="index.html" class="link">nhn-toast-api</a></h1>
+        
+    </div>
+    <div class="search-container" id="search-container">
+        <input type="text" placeholder="Search">
+        <ul></ul>
+    </div>
+    
+    <div class="lnb-api hidden"><h3>Modules</h3><ul><li><a href="module-common.html">common</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="module:common_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="module-common.html#.LRU">LRU</a></li><li><a href="module-common.html#.request">request</a></li></ul><div class="member-type">Methods</div><ul class="inner"><li><a href="module-common.html#.getInstance">getInstance</a></li></ul></div></li></ul></div><div class="lnb-api hidden"><h3>Classes</h3><ul><li><a href="Compute.html">Compute</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Compute_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="Compute.html#availabilityZones">availabilityZones</a></li><li><a href="Compute.html#createInstance">createInstance</a></li><li><a href="Compute.html#deleteInstance">deleteInstance</a></li><li><a href="Compute.html#instances">instances</a></li><li><a href="Compute.html#instancesDetail">instancesDetail</a></li><li><a href="Compute.html#request">request</a></li></ul><div class="member-type">Typedef</div><ul class="inner"><li><a href="Compute.html#~Instance">Instance</a></li><li><a href="Compute.html#~InstanceCreate">InstanceCreate</a></li><li><a href="Compute.html#~InstanceDetail">InstanceDetail</a></li><li><a href="Compute.html#~Zone">Zone</a></li></ul></div></li><li><a href="Network.html">Network</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Network_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="Network.html#request">request</a></li><li><a href="Network.html#securityGroups">securityGroups</a></li></ul><div class="member-type">Typedef</div><ul class="inner"><li><a href="Network.html#~SecurityGroup">SecurityGroup</a></li><li><a href="Network.html#~SecurityGroupRule">SecurityGroupRule</a></li></ul></div></li><li><a href="Toast.html">Toast</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Toast_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="Toast.html#getCommonHeaders">getCommonHeaders</a></li><li><a href="Toast.html#getCommonToken">getCommonToken</a></li><li><a href="Toast.html#request">request</a></li></ul><div class="member-type">Typedef</div><ul class="inner"><li><a href="Toast.html#~CommonHeaders">CommonHeaders</a></li><li><a href="Toast.html#~TokenStore">TokenStore</a></li><li><a href="Toast.html#~TokenStoreGet">TokenStoreGet</a></li><li><a href="Toast.html#~TokenStoreSet">TokenStoreSet</a></li></ul></div></li></ul></div>
+</nav>
+<div id="resizer"></div>
+
+<div class="main" id="main">
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// @ts-check
+
+class Compute {
+
+    /**
+     * @typedef {object} Zone
+     * @property {string} zoneName
+     * @property {object} zoneState
+     * @property {boolean} zoneState.available
+     * @memberof Compute
+     */
+
+    /**
+     * @typedef {object} Instance
+     * @property {string} id
+     * @property {string} name
+     * @property {string} status
+     * @memberof Compute
+     */
+
+    /**
+     * @typedef {object} InstanceDetail
+     * 
+     * @property {object[]} addresses
+     * @property {string} addresses.macAddress
+     * @property {string} addresses.ipAddress
+     * @property {number} addresses.version
+     * @property {string} addresses.floatingIpAddress
+     * @property {string} availabilityZone
+     * 
+     * @property {object} flavor
+     * @property {string} flavor.id
+     * @property {string} flavor.name
+     * @property {number} flavor.cpu
+     * @property {number} flavor.ram
+     * 
+     * @property {string} status
+     * @property {string} id
+     * @property {string} name
+     * @property {string} image
+     * @property {Object.&lt;string, string>} metadata
+     * 
+     * @property {string} keyName
+     * 
+     * @property {object} volumes
+     * @property {string} volumes.root
+     * @property {number} volumes.size
+     * @property {object[]} volumns.attachments
+     * @property {string} volumns.attachments.id
+     * @property {string} volumns.attachments.name
+     * @property {number} volumns.attachments.size
+     * @property {string} volumns.attachments.type
+     * 
+     * @property {object[]} securityGroups
+     * @property {string} securityGroups.name
+     * 
+     * @property {string} launchedAt
+     * @property {string} string
+     * @property {string} string
+     * 
+     * @memberof Compute
+     */
+
+    /**
+     * @typedef {object} InstanceCreate
+     * @property {string} name
+     * @property {string} image
+     * @property {string} flavor
+     * @property {object[]} [networks]
+     * @property {string} networks.id
+     * @property {string} networks.subnetId
+     * @property {string} availabilityZone
+     * @property {string} keyName
+     * @property {number} count
+     * @property {object} volume
+     * @property {number} volume.size
+     * @property {string} volume.type
+     * @property {object[]} securityGroups
+     * @property {string} name
+     * @memberof Compute
+     */
+
+
+    /**
+     * @param {import('./Toast')} oToast 
+     */
+    constructor(oToast) {
+
+        this.oToast = oToast;
+
+    }
+
+    /**
+     * Request API
+     * @param {string} path 
+     * @param {object} [options]
+     * @return {Promise&lt;object>}
+     */
+    async request(path, options = {}) {
+
+        const url = `https://api-compute.cloud.toast.com/compute/v1.0/appkeys/${this.oToast.APPKEY}/${path}`;
+        const headers = await this.oToast.getCommonHeaders();
+
+        return this.oToast.request(url, { headers, ...options });
+
+    }
+
+    /**
+     * 가용영역 조회
+     * @return {Promise&lt;Zone[]>}
+     * 
+     */
+    async availabilityZones() {
+        const { zones } = await this.request('availability-zones', { method: 'GET' });
+        return zones;
+    }
+
+    /**
+     * 인스턴스 조회
+     * @param {string} [instanceId] 인스턴스 ID. 비우는 경우 모든 인스턴스 조회
+     * @return {Promise&lt;Instance[]>}
+     */
+    async instances(instanceId) {
+        const { instances } = await this.request(`instances${instanceId ? `?id=${instanceId}` : ''}`, { method: 'GET' });
+        return instances;
+    }
+
+    /**
+     * 인스턴스 상세 조회
+     * @param {string} [instanceId] 인스턴스 ID. 비우는 경우 모든 인스턴스 조회
+     * @return {Promise&lt;InstanceDetail[]>}
+     */
+    async instancesDetail(instanceId) {
+        const { instances } = await this.request(`instances-detail${instanceId ? `?id=${instanceId}` : ''}`, { method: 'GET' });
+        return instances;
+    }
+
+    /**
+     * 인스턴스 생성
+     * @param {InstanceCreate} instance 
+     * @return {Promise&lt;Instance>}
+     */
+    async createInstance(instance) {
+        const { instance: ret } = await this.request('instances', { method: 'POST', body: { instance } });
+        return ret;
+    }
+
+    /**
+     * 인스턴스 삭제
+     * @param {string} instanceId 인스턴스 ID
+     * @return {Promise&lt;void>}
+     */
+    async deleteInstance(instanceId) {
+        await this.request(`instances?id=${instanceId}`, { method: 'DELETE' });
+    }
+
+}
+
+module.exports = Compute;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<footer>
+    <img class="logo" src="img/toast-ui.png" style="">
+    <div class="footer-text">Contact: <a href='http://hbs.pe.kr' target=_blank>http://hbs.pe.kr</a> <a href='mailto:bitofsky@naver.com'>bitofsky@naver.com</a></div>
+</footer>
+<script>prettyPrint();</script>
+<script src="scripts/jquery.min.js"></script>
+<script src="scripts/tui-doc.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+    <script>
+        var id = '_sub'.replace(/"/g, '_');
+        var selectedApi = document.getElementById(id); // do not use jquery selector
+        var $selectedApi = $(selectedApi);
+
+        $selectedApi.removeClass('hidden');
+        $selectedApi.parent().find('.glyphicon').removeClass('glyphicon-plus').addClass('glyphicon-minus');
+        showLnbApi();
+    </script>
+
+</body>
+</html>

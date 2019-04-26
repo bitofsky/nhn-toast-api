@@ -1,0 +1,39 @@
+{
+    "plugins": [
+        "jsdoc/plugin/jsdoc-plugin-typescript"
+    ],
+    "typescript": {
+        "moduleRoot": "src"
+    },
+    "recurseDepth": 10,
+    "source": {
+        "includePattern": ".+\\.js(doc|x)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "sourceType": "module",
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": [
+            "jsdoc",
+            "closure"
+        ]
+    },
+    "templates": {
+        "cleverLinks": true,
+        "monospaceLinks": true,
+        "useLongnameInNav": true,
+        "name": "nhn-toast-api",
+        "footerText": "Contact: <a href='http://hbs.pe.kr' target=_blank>http://hbs.pe.kr</a> <a href='mailto:bitofsky@naver.com'>bitofsky@naver.com</a>",
+        "css": [
+            "styles/custom.css"
+        ]
+    },
+    "opts": {
+        "encoding": "utf8",
+        "destination": "docs/",
+        "readme": "readme.md",
+        "recurse": true,
+        "verbose": true,
+        "template": "node_modules/tui-jsdoc-template"
+    }
+}

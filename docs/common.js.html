@@ -1,0 +1,116 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Source: common.js | nhn-toast-api</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-jsdoc.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/tui-doc.css">
+
+    
+        
+            <link type="text/css" rel="stylesheet" href="styles/custom.css">
+        
+    
+</head>
+<body>
+<nav class="lnb" id="lnb">
+    <div class="logo" style="">
+        
+            <img src="img/toast-ui.png" width="100%" height="100%">
+        
+    </div>
+    <div class="title">
+        <h1><a href="index.html" class="link">nhn-toast-api</a></h1>
+        
+    </div>
+    <div class="search-container" id="search-container">
+        <input type="text" placeholder="Search">
+        <ul></ul>
+    </div>
+    
+    <div class="lnb-api hidden"><h3>Modules</h3><ul><li><a href="module-common.html">common</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="module:common_sub"><div class="member-type">Members</div><ul class="inner"><li><a href="module-common.html#.LRU">LRU</a></li><li><a href="module-common.html#.request">request</a></li></ul><div class="member-type">Methods</div><ul class="inner"><li><a href="module-common.html#.getInstance">getInstance</a></li></ul></div></li></ul></div><div class="lnb-api hidden"><h3>Classes</h3><ul><li><a href="Compute.html">Compute</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Compute_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="Compute.html#availabilityZones">availabilityZones</a></li><li><a href="Compute.html#createInstance">createInstance</a></li><li><a href="Compute.html#deleteInstance">deleteInstance</a></li><li><a href="Compute.html#instances">instances</a></li><li><a href="Compute.html#instancesDetail">instancesDetail</a></li><li><a href="Compute.html#request">request</a></li></ul><div class="member-type">Typedef</div><ul class="inner"><li><a href="Compute.html#~Instance">Instance</a></li><li><a href="Compute.html#~InstanceCreate">InstanceCreate</a></li><li><a href="Compute.html#~InstanceDetail">InstanceDetail</a></li><li><a href="Compute.html#~Zone">Zone</a></li></ul></div></li><li><a href="Network.html">Network</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Network_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="Network.html#request">request</a></li><li><a href="Network.html#securityGroups">securityGroups</a></li></ul><div class="member-type">Typedef</div><ul class="inner"><li><a href="Network.html#~SecurityGroup">SecurityGroup</a></li><li><a href="Network.html#~SecurityGroupRule">SecurityGroupRule</a></li></ul></div></li><li><a href="Toast.html">Toast</a><button type="button" class="hidden toggle-subnav btn btn-link">  <span class="glyphicon glyphicon-plus"></span></button><div class="hidden" id="Toast_sub"><div class="member-type">Methods</div><ul class="inner"><li><a href="Toast.html#getCommonHeaders">getCommonHeaders</a></li><li><a href="Toast.html#getCommonToken">getCommonToken</a></li><li><a href="Toast.html#request">request</a></li></ul><div class="member-type">Typedef</div><ul class="inner"><li><a href="Toast.html#~CommonHeaders">CommonHeaders</a></li><li><a href="Toast.html#~TokenStore">TokenStore</a></li><li><a href="Toast.html#~TokenStoreGet">TokenStoreGet</a></li><li><a href="Toast.html#~TokenStoreSet">TokenStoreSet</a></li></ul></div></li></ul></div>
+</nav>
+<div id="resizer"></div>
+
+<div class="main" id="main">
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * 공용 기능 모듈
+ * @module common
+ */
+
+// @ts-check
+
+const request = require('request-promise');
+const LRU = require('lru-cache');
+const sInstance = Symbol('common.getInstance');
+
+/** @see https://github.com/request/request-promise */
+
+exports.request = request;
+
+/** @see https://github.com/isaacs/node-lru-cache */
+exports.LRU = LRU;
+
+/**
+ * Toast 서브클래스 싱글턴 구현
+ * 각 서브클래스 인스턴스 객체를 필요한 때 1회만 생성하기 위함
+ * @template T
+ * @param {import('./Toast')} oToast 
+ * @param {string} name 
+ * @param {{ new(oToast: import('./Toast')): T }} cls Class
+ * @returns {T}
+ */
+exports.getInstance = (oToast, name, cls) => {
+
+   const container = oToast[sInstance] || (oToast[sInstance] = {});
+
+   return container[name] = container[name] || new cls(oToast);
+
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<footer>
+    <img class="logo" src="img/toast-ui.png" style="">
+    <div class="footer-text">Contact: <a href='http://hbs.pe.kr' target=_blank>http://hbs.pe.kr</a> <a href='mailto:bitofsky@naver.com'>bitofsky@naver.com</a></div>
+</footer>
+<script>prettyPrint();</script>
+<script src="scripts/jquery.min.js"></script>
+<script src="scripts/tui-doc.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+    <script>
+        var id = '_sub'.replace(/"/g, '_');
+        var selectedApi = document.getElementById(id); // do not use jquery selector
+        var $selectedApi = $(selectedApi);
+
+        $selectedApi.removeClass('hidden');
+        $selectedApi.parent().find('.glyphicon').removeClass('glyphicon-plus').addClass('glyphicon-minus');
+        showLnbApi();
+    </script>
+
+</body>
+</html>

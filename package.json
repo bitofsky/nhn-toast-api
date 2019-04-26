@@ -4,7 +4,8 @@
   "description": "NHN Toast API NodeJS Module",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/bin/mocha"
+    "test": "./node_modules/bin/mocha",
+    "jsdoc": "node_modules/.bin/jsdoc -c jsdoc/jsdoc.json src"
   },
   "author": "Bum-Seok Hwang",
   "license": "MIT",
@@ -16,8 +17,12 @@
   "devDependencies": {
     "@types/mocha": "^5.2.6",
     "@types/node": "^11.13.0",
-    "mocha": "^6.1.1",
+    "better-docs": "^1.1.6",
+    "jsdoc": "^3.5.5",
+    "jsdoc-plugin-typescript": "^1.0.7",
+    "mocha": "^6.1.4",
     "tslint": "^5.15.0",
+    "tui-jsdoc-template": "^1.2.2",
     "typescript": "^3.4.2"
   },
   "repository": {

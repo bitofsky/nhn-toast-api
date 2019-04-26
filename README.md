@@ -3,9 +3,7 @@ NHN Toast API - NodeJS 모듈 입니다.
 개발 진행중으로 현재는 간단한 조회 기능만 제공 됩니다.
 
 ## Npm Install
-```
-npm install nhn-toast-api
-```
+    npm install nhn-toast-api
 
 ## Uses
 ``` javascript
@@ -69,10 +67,11 @@ const oToast = new Toast({ ...authInfo, tokenStore });
 
 이 모듈은 NodeJS 11 & JavaScript 로 개발되며 IDE 에서 Type Assist 를 위해 TypeScript d.ts 로 문서화 하고 있습니다.
 
-VS Code 로 launch.json 에 다음과 같이 Mocha Test 환경 구성을 할 수 있습니다.
-
-.vscode/launch.json
+### VS Code
+* launch.json 에 다음과 같이 Mocha Test 환경 구성을 할 수 있습니다.
+    
 ``` json
+.vscode/launch.json
 {
     "version": "0.2.0",
     "configurations": [
@@ -98,8 +97,13 @@ VS Code 로 launch.json 에 다음과 같이 Mocha Test 환경 구성을 할 수
         },
     ]
 }
-
 ```
+
+### JSDoc 파일 위치
+    docs/index.html
+
+### JSDoc 재생성
+    npm run jsdoc
 
 ## License
 (The MIT License)
