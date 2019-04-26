@@ -111,11 +111,21 @@ const oToast = new Toast({ ...authInfo, tokenStore });</code></pre><h2>Todos</h2
 <li>ObjectStorage API</li>
 </ol>
 <h2>Contributing</h2><p>이 모듈은 NodeJS 11 &amp; JavaScript 로 개발되며 IDE 에서 Type Assist 를 위해 TypeScript d.ts 로 문서화 하고 있습니다.</p>
-<h3>VS Code</h3><ul>
-<li>launch.json 에 다음과 같이 Mocha Test 환경 구성을 할 수 있습니다.</li>
+<h3>VS Code &amp; Test</h3><ul>
+<li>VSCode 에서 F5 를 눌러 Mocha Tests 를 실행하면 DEBUG CONSOLE 을 사용할 수 있습니다.</li>
+<li><code>npm test</code> 로 테스트 할 수 있습니다.</li>
+<li>/test_env.js 에 Test API 를 실행하기 위한 인증 정보를 넣습니다. (.gitignore 되어 있습니다.)</li>
 </ul>
-<pre class="prettyprint source lang-json"><code>.vscode/launch.json
-{
+<pre class="prettyprint source lang-javascript"><code>module.exports = {
+    &quot;TOAST_ID&quot;: &quot;Your Toast Email ID&quot;,
+    &quot;APPKEY&quot;: &quot;Your APP Key&quot;,
+    &quot;TENANT_ID&quot;: &quot;API Endpoint Tenant ID&quot;,
+    &quot;API_PASSWORD&quot;: &quot;API Endpoint Password&quot;,
+    // &quot;TEST&quot;: &quot;compute&quot;, 특정 Mocha Test 만 선택적으로 실행할 수 있습니다.
+};</code></pre><ul>
+<li>/.vscode/launch.json 에 다음과 같이 Mocha Tests 환경 구성을 할 수 있습니다.</li>
+</ul>
+<pre class="prettyprint source lang-json"><code>{
     &quot;version&quot;: &quot;0.2.0&quot;,
     &quot;configurations&quot;: [
         {
@@ -130,13 +140,6 @@ const oToast = new Toast({ ...authInfo, tokenStore });</code></pre><h2>Todos</h2
                 &quot;${workspaceFolder}/test&quot;,
             ],
             &quot;internalConsoleOptions&quot;: &quot;openOnSessionStart&quot;,
-            &quot;env&quot;: {
-                &quot;TOAST_ID&quot;: &quot;Your Toast Email ID&quot;,
-                &quot;APPKEY&quot;: &quot;Your APP Key&quot;,
-                &quot;TENANT_ID&quot;: &quot;API Endpoint Tenant ID&quot;,
-                &quot;API_PASSWORD&quot;: &quot;API Endpoint Password&quot;,
-                // &quot;TEST&quot;: &quot;compute&quot;, 특정 Mocha Test 만 선택적으로 실행할 수 있습니다.
-            }
         },
     ]
 }</code></pre><h3>JSDoc 파일 위치</h3><pre class="prettyprint source"><code>docs/index.html</code></pre><h3>JSDoc 재생성</h3><pre class="prettyprint source"><code>npm run jsdoc</code></pre><h2>License</h2><p>(The MIT License)</p>

@@ -68,11 +68,25 @@ const oToast = new Toast({ ...authInfo, tokenStore });
 
 이 모듈은 NodeJS 11 & JavaScript 로 개발되며 IDE 에서 Type Assist 를 위해 TypeScript d.ts 로 문서화 하고 있습니다.
 
-### VS Code
-* launch.json 에 다음과 같이 Mocha Test 환경 구성을 할 수 있습니다.
+### VS Code & Test
+
+* VSCode 에서 F5 를 눌러 Mocha Tests 를 실행하면 DEBUG CONSOLE 을 사용할 수 있습니다.
+* ``` npm test ``` 로 테스트 할 수 있습니다.
+* /test_env.js 에 Test API 를 실행하기 위한 인증 정보를 넣습니다. (.gitignore 되어 있습니다.)
+
+``` javascript
+module.exports = {
+    "TOAST_ID": "Your Toast Email ID",
+    "APPKEY": "Your APP Key",
+    "TENANT_ID": "API Endpoint Tenant ID",
+    "API_PASSWORD": "API Endpoint Password",
+    // "TEST": "compute", 특정 Mocha Test 만 선택적으로 실행할 수 있습니다.
+};
+```
+
+* /.vscode/launch.json 에 다음과 같이 Mocha Tests 환경 구성을 할 수 있습니다.
     
 ``` json
-.vscode/launch.json
 {
     "version": "0.2.0",
     "configurations": [
@@ -88,13 +102,6 @@ const oToast = new Toast({ ...authInfo, tokenStore });
                 "${workspaceFolder}/test",
             ],
             "internalConsoleOptions": "openOnSessionStart",
-            "env": {
-                "TOAST_ID": "Your Toast Email ID",
-                "APPKEY": "Your APP Key",
-                "TENANT_ID": "API Endpoint Tenant ID",
-                "API_PASSWORD": "API Endpoint Password",
-                // "TEST": "compute", 특정 Mocha Test 만 선택적으로 실행할 수 있습니다.
-            }
         },
     ]
 }

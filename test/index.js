@@ -1,6 +1,6 @@
 // @ts-check
 
-const { APPKEY, TENANT_ID, API_PASSWORD, TOAST_ID, TEST } = process.env;
+const { APPKEY, TENANT_ID, API_PASSWORD, TOAST_ID, TEST } = require('../testenv');
 
 const Toast = require('../');
 
