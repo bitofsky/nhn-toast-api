@@ -29,7 +29,7 @@ const oToast = new Toast({ TOAST_ID, APPKEY, TENANT_ID, API_PASSWORD });
 ```
 
 ## API Documents
-* [nhn-toast-api](https://bitofsky.github.io/nhn-toast-api/index.html) - JSDOC
+* [nhn-toast-api](https://bitofsky.github.io/nhn-toast-api) - JSDOC
 * [docs.toast.com Api Guide](https://docs.toast.com/ko/Compute/Instance/ko/api-guide/)
 
 ## Token Store
