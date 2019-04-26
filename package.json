@@ -1,6 +1,6 @@
 {
   "name": "nhn-toast-api",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "NHN Toast API NodeJS Module",
   "main": "index.js",
   "scripts": {
