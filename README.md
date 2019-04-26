@@ -33,7 +33,7 @@ const oToast = new Toast({ TOAST_ID, APPKEY, TENANT_ID, API_PASSWORD });
 * [docs.toast.com Api Guide](https://docs.toast.com/ko/Compute/Instance/ko/api-guide/)
 
 ## Token Store
- - LRU 대신 별도의 Token 보관소(File or DB or etc...) 사용은 Toast 객체 생성시 tokenStore를 지정해주면 됩니다.
+ - LRU 대신 별도의 Token 보관소(File or DB or etc...) 사용은 Toast 객체 생성시 tokenStore 를 지정해주면 됩니다.
  - tokenStore는 LRU와 같이 다음과 같은 get / set 인터페이스를 갖추고 있어야 합니다.
  - get / set 은 Async 가능합니다.
 
@@ -66,7 +66,7 @@ const oToast = new Toast({ ...authInfo, tokenStore });
 
 ## Contributing
 
-이 모듈은 NodeJS 11 & JavaScript 로 개발되며 IDE 에서 Type Assist 를 위해 TypeScript d.ts 로 문서화 하고 있습니다.
+이 모듈은 NodeJS 11 & JavaScript 로 개발되며 JSDoc 으로 문서화 하고 있습니다.
 
 ### VS Code & Test
 
