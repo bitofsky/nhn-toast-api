@@ -29,7 +29,8 @@ const oToast = new Toast({ TOAST_ID, APPKEY, TENANT_ID, API_PASSWORD });
 ```
 
 ## API Documents
- - 준비중
+* [nhn-toast-api](https://bitofsky.github.io/nhn-toast-api) - JSDOC
+* [docs.toast.com Api Guide](https://docs.toast.com/ko/Compute/Instance/ko/api-guide/)
 
 ## Token Store
  - LRU 대신 별도의 Token 보관소(File or DB or etc...) 사용은 Toast 객체 생성시 tokenStore를 지정해주면 됩니다.
